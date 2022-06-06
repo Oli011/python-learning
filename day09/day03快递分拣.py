@@ -15,6 +15,10 @@ with open('day03快递分拣数据源.md', mode='r', encoding='utf-8') as source
     for item in cc:
         province = item.strip().split(',')[1][1:4]
         place.append(province)
+    #没有考虑特殊名称省市，导致名称不全
+    #解决方法
+    #1通过省市来进行切割，但是内存开销比较大
+    #2把特殊省市罗列出来，通过切割后对比来确认特殊省市，然后进行地址添加
     #省份去重
     final_place = list(set(place))
 
