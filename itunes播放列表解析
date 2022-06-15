@@ -6,8 +6,9 @@ import numpy as np
 # 原项目中有个多个列表文件查找重复歌曲的操作，这里先进行单一播放列表的操作
 # 用内置模块plistlib 来读取播放列表文件
 # 以提取歌曲年份和歌曲长度为例
-plist = plistlib.readPlist('25.xml')
-tracks = plist['Tracks']
+fileName = '25.xml'
+with open(fileName, 'rb') as fp:
+    tracks = plistlib.load(fp)['Tracks']
 years = []
 durations = []
 for trackId, track in tracks.items():
@@ -31,6 +32,3 @@ pyplot.xlabel('Track duration')
 pyplot.ylabel('Years')
 
 pyplot.show()
-
-
-# 主要是练习画图
